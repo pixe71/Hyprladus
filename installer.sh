@@ -127,7 +127,7 @@ done
 
 echo "Enabling services"
 sudo systemctl enable NetworkManager.service
-sudo systemctl enable greet.service
+sudo systemctl enable greetd.service
 
 
 # COPYING FILES
