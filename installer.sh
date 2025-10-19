@@ -9,8 +9,8 @@ if [[ $EUID -eq 0 ]]; then
     exit 1
 fi
 
+LOG="./install.log"
 exec > >(tee -a "$LOG") 2>&1
-LOG="$HOME/install.log"
 
 clear
 
@@ -123,7 +123,29 @@ echo "----------------------------------------"
 echo " Installing official packages (pacman)..."
 echo "----------------------------------------"
 
-sudo pacman -Syu --needed --noconfirm "${pacman_packages[@]}" || echo "⚠️ Some pacman packages failed."
+sudo pacman -Syu --needed --noconfirm "${pacman_packages[@]}" || {
+    echo "⚠️  Some pacman packages failed to install."
+}
+
+echo "----------------------------------------"
+echo " Verifying missing packages..."
+echo "----------------------------------------"
+
+missing_pkgs=()
+
+for pkg in "${pacman_packages[@]}"; do
+    if ! pacman -Qi "$pkg" &>/dev/null; then
+        missing_pkgs+=("$pkg")
+    fi
+done
+
+if ((${#missing_pkgs[@]} > 0)); then
+    echo "⚠️  Some official packages were not found in pacman, retrying via yay:"
+    printf ' - %s\n' "${missing_pkgs[@]}"
+    yay -S --noconfirm --needed "${missing_pkgs[@]}" || echo "⚠️  Could not install some fallback packages."
+else
+    echo "✅  All pacman packages installed successfully."
+fi
 
 echo "----------------------------------------"
 echo " Installing AUR packages (yay)..."
@@ -132,12 +154,16 @@ echo "----------------------------------------"
 for pkg in "${aur_packages[@]}"; do
     if ! yay -Qi "$pkg" &>/dev/null; then
         echo "Installing $pkg (AUR)..."
-        yay -S --noconfirm --needed "$pkg" || echo "⚠️ Cannot install $pkg"
+        yay -S --noconfirm --needed "$pkg" || echo "⚠️  Cannot install $pkg"
     else
         echo "$pkg already installed."
     fi
 done
 
+echo "----------------------------------------"
+echo "✅ Package installation complete."
+echo "Log saved at: $LOG"
+echo "----------------------------------------"
 # packages=(
 #     hyprland
 #     networkmanager
