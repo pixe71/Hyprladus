@@ -170,7 +170,7 @@ echo "Enabling services"
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable greetd.service
 sudo systemctl enable auto-cpufreq.service
-sudo systemctl enale bluetooth.service
+sudo systemctl enable bluetooth.service
 
 
 # COPYING FILES
