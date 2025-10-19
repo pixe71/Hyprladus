@@ -91,9 +91,13 @@ pacman_packages=(
     qt6-wayland
     ttf-jetbrains-mono-nerd
     ttf-nerd-fonts-symbols
+    ttf-nerd-fonts-symbols-mono
     ttf-dejavu
     noto-fonts
+    noto-fonts-emoji
+    noto-fonts-cjk
     adwaita-icon-theme
+    papirus-icon-theme
     udiskie
     discord
     cava
@@ -106,6 +110,7 @@ pacman_packages=(
     zoxide
     fzf
     pacman-contrib
+    gtk-engine-murrine
 )
 
 # AUR packages (install with yay)
@@ -220,6 +225,8 @@ sudo cp -r zsh /usr/share/
 sudo cp -r zsh-theme-powerlevel10k /usr/share/
 echo "Copying Spicetify config"
 cp -r config/spicetify ~/.config/
+
+sudo chsh -s /usr/bin/zsh
 
 ./set_wallpaper.sh Wallpapers/hypr.png
 
