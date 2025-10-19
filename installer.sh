@@ -105,6 +105,7 @@ pacman_packages=(
     greetd-tuigreet
     zoxide
     fzf
+    pacman-contrib
 )
 
 # AUR packages (install with yay)
