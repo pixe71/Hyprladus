@@ -41,7 +41,7 @@ else
     echo "yay already installed."
 fi
 
-packages=(
+pacman_packages=(
     hyprland
     networkmanager
     network-manager-applet
@@ -85,12 +85,6 @@ packages=(
     eza
     zsh
     zsh-completions
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-    zsh-history-substring-search
-    zsh-you-should-use
-    zsh-fzf
-    zsh-z
     pipewire
     wireplumber
     qt5-wayland
@@ -104,7 +98,6 @@ packages=(
     discord
     cava
     blueman
-    autocpufreq
     feh
     okular
     timeshift
@@ -112,17 +105,124 @@ packages=(
     greetd-tuigreet
 )
 
-# PACKAGES INSTALLATION
+# AUR packages (install with yay)
+aur_packages=(
+    autocpufreq
+    python-pywal16
+    python-pywal-pywalfox
+    python-spicetify
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    zsh-history-substring-search
+    zsh-you-should-use
+    zsh-fzf
+    zsh-z
+)
 
-for pkg in "${packages[@]}"; do
+echo "----------------------------------------"
+echo " Installing official packages (pacman)..."
+echo "----------------------------------------"
+
+sudo pacman -Syu --needed --noconfirm "${pacman_packages[@]}" || echo "⚠️ Some pacman packages failed."
+
+echo "----------------------------------------"
+echo " Installing AUR packages (yay)..."
+echo "----------------------------------------"
+
+for pkg in "${aur_packages[@]}"; do
     if ! yay -Qi "$pkg" &>/dev/null; then
-        echo "Installing $pkg (yay)..."
+        echo "Installing $pkg (AUR)..."
         yay -S --noconfirm --needed "$pkg" || echo "⚠️ Cannot install $pkg"
     else
         echo "$pkg already installed."
     fi
 done
 
+# packages=(
+#     hyprland
+#     networkmanager
+#     network-manager-applet
+#     hyprpicker
+#     firefox
+#     waybar
+#     micro
+#     vim
+#     neovim
+#     kitty
+#     hyprpolkitagent
+#     hyprlock
+#     hypridle
+#     hyprsunset
+#     hyprland-qt-support
+#     hyprqt6engine
+#     hyprcursor
+#     hyprutils
+#     hyprlang
+#     aquamarine
+#     hyprgraphics
+#     hyprland-qtutils
+#     xdg-desktop-portal-hyprland
+#     rofi
+#     thunar
+#     bat
+#     btop
+#     neofetch
+#     fastfetch
+#     grim
+#     slurp
+#     wl-clipboard
+#     swww
+#     swaync
+#     polkit
+#     pamixer
+#     caffeine
+#     nwg-look
+#     nwg-displays
+#     tree
+#     eza
+#     zsh
+#     zsh-completions
+#     zsh-syntax-highlighting
+#     zsh-autosuggestions
+#     zsh-history-substring-search
+#     zsh-you-should-use
+#     zsh-fzf
+#     zsh-z
+#     pipewire
+#     wireplumber
+#     qt5-wayland
+#     qt6-wayland
+#     ttf-jetbrains-mono-nerd
+#     ttf-nerd-fonts-symbols
+#     ttf-dejavu
+#     noto-fonts
+#     adwaita-icon-theme
+#     udiskie
+#     discord
+#     cava
+#     blueman
+#     autocpufreq
+#     feh
+#     okular
+#     timeshift
+#     greetd
+#     greetd-tuigreet
+#     python-pywal16
+#     python-pywal-pywalfox
+#     python-spicetify
+# )
+#
+# # PACKAGES INSTALLATION
+#
+# for pkg in "${packages[@]}"; do
+#     if ! yay -Qi "$pkg" &>/dev/null; then
+#         echo "Installing $pkg (yay)..."
+#         yay -S --noconfirm --needed "$pkg" || echo "⚠️ Cannot install $pkg"
+#     else
+#         echo "$pkg already installed."
+#     fi
+# done
+#
 # SERVICES
 
 echo "Enabling services"
