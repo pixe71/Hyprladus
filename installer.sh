@@ -213,7 +213,13 @@ echo "Copying waybar"
 cp -r config/waybar/ ~/.config/
 echo "Copying cursor theme"
 sudo cp -r Bibata-Original-Classic /usr/share/icons/
+echo "Copying greetui config"
 sudo cp greetui/config.toml /etc/greetd/
+echo "Copying zsh dependencies"
+cp -r zsh /usr/share/
+cp -r zsh-theme-powerlevel10k /usr/share/
+echo "Copying Spicetify config"
+cp -r config/spicetify ~/.config/
 
 ./set_wallpaper.sh Wallpapers/hypr.png
 
