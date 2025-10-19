@@ -103,20 +103,20 @@ pacman_packages=(
     timeshift
     greetd
     greetd-tuigreet
+    zoxide
+    fzf
 )
 
 # AUR packages (install with yay)
 aur_packages=(
-    autocpufreq
+    auto-cpufreq
     python-pywal16
-    python-pywal-pywalfox
-    python-spicetify
+    python-pywalfox
+    spicetify-cli
     zsh-syntax-highlighting
     zsh-autosuggestions
     zsh-history-substring-search
     zsh-you-should-use
-    zsh-fzf
-    zsh-z
 )
 
 echo "----------------------------------------"
@@ -164,96 +164,13 @@ echo "----------------------------------------"
 echo "✅ Package installation complete."
 echo "Log saved at: $LOG"
 echo "----------------------------------------"
-# packages=(
-#     hyprland
-#     networkmanager
-#     network-manager-applet
-#     hyprpicker
-#     firefox
-#     waybar
-#     micro
-#     vim
-#     neovim
-#     kitty
-#     hyprpolkitagent
-#     hyprlock
-#     hypridle
-#     hyprsunset
-#     hyprland-qt-support
-#     hyprqt6engine
-#     hyprcursor
-#     hyprutils
-#     hyprlang
-#     aquamarine
-#     hyprgraphics
-#     hyprland-qtutils
-#     xdg-desktop-portal-hyprland
-#     rofi
-#     thunar
-#     bat
-#     btop
-#     neofetch
-#     fastfetch
-#     grim
-#     slurp
-#     wl-clipboard
-#     swww
-#     swaync
-#     polkit
-#     pamixer
-#     caffeine
-#     nwg-look
-#     nwg-displays
-#     tree
-#     eza
-#     zsh
-#     zsh-completions
-#     zsh-syntax-highlighting
-#     zsh-autosuggestions
-#     zsh-history-substring-search
-#     zsh-you-should-use
-#     zsh-fzf
-#     zsh-z
-#     pipewire
-#     wireplumber
-#     qt5-wayland
-#     qt6-wayland
-#     ttf-jetbrains-mono-nerd
-#     ttf-nerd-fonts-symbols
-#     ttf-dejavu
-#     noto-fonts
-#     adwaita-icon-theme
-#     udiskie
-#     discord
-#     cava
-#     blueman
-#     autocpufreq
-#     feh
-#     okular
-#     timeshift
-#     greetd
-#     greetd-tuigreet
-#     python-pywal16
-#     python-pywal-pywalfox
-#     python-spicetify
-# )
-#
-# # PACKAGES INSTALLATION
-#
-# for pkg in "${packages[@]}"; do
-#     if ! yay -Qi "$pkg" &>/dev/null; then
-#         echo "Installing $pkg (yay)..."
-#         yay -S --noconfirm --needed "$pkg" || echo "⚠️ Cannot install $pkg"
-#     else
-#         echo "$pkg already installed."
-#     fi
-# done
-#
-# SERVICES
+
 
 echo "Enabling services"
 sudo systemctl enable NetworkManager.service
 sudo systemctl enable greetd.service
+sudo systemctl enable auto-cpufreq.service
+sudo systemctl enale bluetooth.service
 
 
 # COPYING FILES
@@ -274,10 +191,12 @@ echo "Copying rmnot.sh"
 cp rmnot.sh ~/
 echo "Copying wallpapers"
 cp -r Wallpapers/ ~/Pictures/
+echo "Copying kitty config"
+cp -r config/kitty ~/.config/
 echo "Copying wal cache"
-cp -r cache/wal ~/.cache/wal/
+cp -r cache/wal ~/.cache/
 echo "Copying wal config"
-cp -r cache/wal ~/.config/wal/
+cp -r config/wal ~/.config/
 echo "Copying scripts"
 cp -r local_share/* ~/.local/share/bin/
 echo "Copying cava config"
