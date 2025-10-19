@@ -112,6 +112,7 @@ aur_packages=(
     auto-cpufreq
     python-pywal16
     python-pywalfox
+    pywal-spicetify
     spicetify-cli
     zsh-syntax-highlighting
     zsh-autosuggestions
