@@ -65,7 +65,7 @@ To switch wallpaper with its theme, you can use the `set_wallpaper.sh` script wi
 | `Super + Tab` | Window switcher      |
 | `Super + V`   | Clipboard manager    |
 
-### Window Navigation
+### Window Navigation
 | Shortcut                | Action                     |
 | ----------------------- | -------------------------- |
 | `Super + ← / → / ↑ / ↓` | Move focus between windows |
