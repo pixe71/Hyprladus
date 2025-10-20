@@ -22,6 +22,7 @@ echo " | |  | | |_| | |_) | |  | | (_| | (_| | |_| \\__ \\"
 echo " |_|  |_|\\__, | .__/|_|  |_|\\__,_|\\__,_|\\__,_|___/"
 echo "          __/ | |                                 "
 echo "         |___/|_|                                 "
+echo ""
 
 sudo pacman -S --needed --noconfirm git base-devel
 
@@ -90,10 +91,8 @@ pacman_packages=(
     ttf-nerd-fonts-symbols
     ttf-0xproto-nerd
     ttf-dejavu
-    ttf-iosevka-nerd
     noto-fonts
     noto-fonts-emoji
-    noto-fonts-cjk
     adwaita-icon-theme
     papirus-icon-theme
     udiskie
