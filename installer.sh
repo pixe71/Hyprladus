@@ -216,7 +216,7 @@ echo "Copying hypr config"
 cp -r config/hypr ~/.config/
 echo "Copying rofi config"
 cp -r config/rofi ~/.config/
-echo "Copying waybar"
+echo "Copying waybar config"
 cp -r config/waybar/ ~/.config/
 echo "Copying cursor theme"
 sudo cp -r Bibata-Original-Classic /usr/share/icons/
