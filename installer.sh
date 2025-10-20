@@ -78,7 +78,6 @@ pacman_packages=(
     swaync
     polkit
     pamixer
-    caffeine
     nwg-look
     nwg-displays
     tree
@@ -91,7 +90,7 @@ pacman_packages=(
     qt6-wayland
     ttf-jetbrains-mono-nerd
     ttf-nerd-fonts-symbols
-    ttf-nerd-fonts-symbols-mono
+    ttf-0xproto-nerd
     ttf-dejavu
     noto-fonts
     noto-fonts-emoji
@@ -129,6 +128,7 @@ aur_packages=(
     zsh-history-substring-search
     zsh-you-should-use
     gtk-theme-material-black
+    caffeine
 )
 
 echo "----------------------------------------"
