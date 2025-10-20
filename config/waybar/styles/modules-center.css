@@ -83,6 +83,7 @@
 #idle_inhibitor {
 	background-color: @tray;
     padding-left: 6px;
+    padding-top: 2px;
 }
 #custom-hyprsunset {
 	background-color: @tray;

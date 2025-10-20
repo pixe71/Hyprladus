@@ -111,6 +111,7 @@ pacman_packages=(
     fzf
     pacman-contrib
     gtk-engine-murrine
+    pavucontrol
 )
 
 # AUR packages (install with yay)
@@ -124,6 +125,7 @@ aur_packages=(
     zsh-autosuggestions
     zsh-history-substring-search
     zsh-you-should-use
+    gtk-theme-material-black
 )
 
 echo "----------------------------------------"
@@ -226,7 +228,8 @@ sudo cp -r zsh-theme-powerlevel10k /usr/share/
 echo "Copying Spicetify config"
 cp -r config/spicetify ~/.config/
 
-sudo chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/zsh root
+sudo chsh -s /usr/bin/zsh "$USER"
 
 ./set_wallpaper.sh Wallpapers/hypr.png
 

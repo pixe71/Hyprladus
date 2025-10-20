@@ -307,3 +307,7 @@ error-message {
     background-color:            @background-colour;
     text-color:                  @foreground-colour;
 }
+
+
+
+/* @import 						 "~/.cache/wal/colors-rofi-dark.rasi" */

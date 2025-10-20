@@ -11,11 +11,10 @@
 
 # Current Theme
 dir="$HOME/.config/rofi/powermenu/type-4"
-theme='style-2'
+theme='style-3'
 
 # CMDs
 uptime="`uptime -p | sed -e 's/up //g'`"
-host=`hostname`
 
 # Options
 shutdown=''
@@ -29,7 +28,7 @@ no=''
 # Rofi CMD
 rofi_cmd() {
 	rofi -dmenu \
-		-p "Goodbye ${USER}" \
+		-p "Get out :(" \
 		-mesg "Uptime: $uptime" \
 		-theme ${dir}/${theme}.rasi
 }
@@ -73,6 +72,8 @@ run_cmd() {
 				i3-msg exit
 			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
 				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+			elif [[ "$XDG_CURRENT_DESKTOP" == 'Hyprland' ]]; then
+			    hyprctl dispatch exit
 			fi
 		fi
 	else
