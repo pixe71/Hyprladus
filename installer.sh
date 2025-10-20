@@ -57,7 +57,6 @@ pacman_packages=(
     hypridle
     hyprsunset
     hyprland-qt-support
-    hyprqt6engine
     hyprcursor
     hyprutils
     hyprlang
@@ -69,7 +68,6 @@ pacman_packages=(
     thunar
     bat
     btop
-    neofetch
     fastfetch
     grim
     slurp
@@ -92,6 +90,7 @@ pacman_packages=(
     ttf-nerd-fonts-symbols
     ttf-0xproto-nerd
     ttf-dejavu
+    ttf-iosevka-nerd
     noto-fonts
     noto-fonts-emoji
     noto-fonts-cjk
@@ -118,6 +117,8 @@ pacman_packages=(
 
 # AUR packages (install with yay)
 aur_packages=(
+    hyprqt6engine
+    neofetch
     auto-cpufreq
     python-pywal16
     python-pywalfox
