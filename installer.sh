@@ -112,6 +112,7 @@ pacman_packages=(
     brightnessctl
     jq
     cliphist
+    kruler
 )
 
 # AUR packages (install with yay)
