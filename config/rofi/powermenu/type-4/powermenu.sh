@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# -*- coding: utf-8 -*-
 
 ## Author : Aditya Shakya (adi1090x)
 ## Github : @adi1090x
