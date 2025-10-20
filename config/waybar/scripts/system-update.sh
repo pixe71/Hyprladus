@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# -*- coding: utf-8 -*-
+
+ICON_UPDATE=$(printf '\U000F0E1F')   # U+F0E1F  (󰸟)
+ICON_DOWNLOAD=$(printf '\uF409')     # U+F409   ()
 
 # Check release
 if [ ! -f /etc/arch-release ]; then
@@ -41,7 +43,7 @@ if [ "$1" == "up" ]; then
     printf '\n'
     read -n 1 -p 'Press any key to continue...'
     "
-  kitty --title "  System Update" sh -c "${command}"
+  kitty --title "$ICON_DOWNLOAD  System Update" sh -c "${command}"
 fi
 
 # Check for AUR updates
@@ -81,7 +83,7 @@ fi
 
 # Module and tooltip
 if [ $total_updates -eq 0 ]; then
-  echo "{\"text\":\"󰸟\", \"tooltip\":\"Packages are up to date\"}"
+  echo "{\"text\":\"$ICON_UPDATE\", \"tooltip\":\"Packages are up to date\"}"
 else
-  echo "{\"text\":\"\", \"tooltip\":\"${tooltip//\"/\\\"}\"}"
+  echo "{\"text\":\"$ICON_DOWNLOAD\", \"tooltip\":\"${tooltip//\"/\\\"}\"}"
 fi

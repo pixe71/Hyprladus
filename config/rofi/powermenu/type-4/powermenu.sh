@@ -1,107 +1,94 @@
 #!/usr/bin/env bash
 # -*- coding: utf-8 -*-
+#
+# Author : Aditya Shakya (adi1090x) - Adapté version UTF-8-safe
+# GitHub : @adi1090x
+# Rofi Power Menu (compatible Nerd Fonts)
+#
+# Styles disponibles : style-1 .. style-5
 
-## Author : Aditya Shakya (adi1090x)
-## Github : @adi1090x
-#
-## Rofi   : Power Menu
-#
-## Available Styles
-#
-## style-1   style-2   style-3   style-4   style-5
-
-# Current Theme
+# Chemin du thème
 dir="$HOME/.config/rofi/powermenu/type-4"
 theme='style-3'
 
-# CMDs
-uptime="`uptime -p | sed -e 's/up //g'`"
+# Uptime
+uptime="$(uptime -p | sed -e 's/up //g')"
 
-# Options
-shutdown=''
-reboot=''
-lock=''
-suspend=''
-logout=''
-yes=''
-no=''
+# Icônes (en Unicode sécurisé)
+shutdown=$(printf '\U0000E9C0')  # 
+reboot=$(printf '\U0000E9C4')    # 
+lock=$(printf '\U0000E98F')      # 
+suspend=$(printf '\U0000E9A3')   # 
+logout=$(printf '\U0000E991')    # 
+yes=$(printf '\U0000E92C')       # 
+no=$(printf '\U0000EA12')        # 
 
-# Rofi CMD
+# Commande rofi principale
 rofi_cmd() {
 	rofi -dmenu \
 		-p "Get out :(" \
 		-mesg "Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme "${dir}/${theme}.rasi"
 }
 
-# Confirmation CMD
+# Confirmation
 confirm_cmd() {
 	rofi -dmenu \
 		-p 'Confirmation' \
-		-mesg 'Are you Sure?' \
-		-theme ${dir}/shared/confirm.rasi
+		-mesg 'Are you sure?' \
+		-theme "${dir}/shared/confirm.rasi"
 }
 
-# Ask for confirmation
+# Confirmation yes/no
 confirm_exit() {
-	echo -e "$yes\n$no" | confirm_cmd
+	printf "%s\n%s\n" "$yes" "$no" | confirm_cmd
 }
 
-# Pass variables to rofi dmenu
+# Menu principal
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	printf "%s\n%s\n%s\n%s\n%s\n" "$lock" "$suspend" "$logout" "$reboot" "$shutdown" | rofi_cmd
 }
 
-# Execute Command
+# Exécution des commandes système
 run_cmd() {
 	selected="$(confirm_exit)"
 	if [[ "$selected" == "$yes" ]]; then
-		if [[ $1 == '--shutdown' ]]; then
-			systemctl poweroff
-		elif [[ $1 == '--reboot' ]]; then
-			systemctl reboot
-		elif [[ $1 == '--suspend' ]]; then
-			mpc -q pause
-			amixer set Master mute
-			systemctl suspend
-		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				i3-msg exit
-			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			elif [[ "$XDG_CURRENT_DESKTOP" == 'Hyprland' ]]; then
-			    hyprctl dispatch exit
-			fi
-		fi
+		case "$1" in
+			--shutdown) systemctl poweroff ;;
+			--reboot)   systemctl reboot ;;
+			--suspend)
+				command -v mpc >/dev/null && mpc -q pause
+				command -v amixer >/dev/null && amixer set Master mute
+				systemctl suspend ;;
+			--logout)
+				case "$DESKTOP_SESSION" in
+					openbox) openbox --exit ;;
+					bspwm)   bspc quit ;;
+					i3)      i3-msg exit ;;
+					plasma)  qdbus org.kde.ksmserver /KSMServer logout 0 0 0 ;;
+				esac
+				[[ "$XDG_CURRENT_DESKTOP" == "Hyprland" ]] && hyprctl dispatch exit
+				;;
+		esac
 	else
 		exit 0
 	fi
 }
 
-# Actions
+# Actions selon le choix
 chosen="$(run_rofi)"
-case ${chosen} in
-    $shutdown)
-		run_cmd --shutdown
-        ;;
-    $reboot)
-		run_cmd --reboot
-        ;;
-    $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
+case "$chosen" in
+	"$shutdown") run_cmd --shutdown ;;
+	"$reboot")   run_cmd --reboot ;;
+	"$lock")
+		if [[ -x /usr/bin/betterlockscreen ]]; then
 			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
+		elif [[ -x /usr/bin/i3lock ]]; then
 			i3lock
+		elif [[ -x /usr/bin/hyprlock ]]; then
+			hyprlock
 		fi
-        ;;
-    $suspend)
-		run_cmd --suspend
-        ;;
-    $logout)
-		run_cmd --logout
-        ;;
+		;;
+	"$suspend")  run_cmd --suspend ;;
+	"$logout")   run_cmd --logout ;;
 esac

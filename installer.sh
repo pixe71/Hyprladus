@@ -112,6 +112,9 @@ pacman_packages=(
     pacman-contrib
     gtk-engine-murrine
     pavucontrol
+    brightnessctl
+    jq
+    cliphist
 )
 
 # AUR packages (install with yay)
