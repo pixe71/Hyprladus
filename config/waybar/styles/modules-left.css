@@ -23,7 +23,7 @@
 #workspaces .active label {
 	font-size: 18px;
 	color: @accent;
-	padding: 1px 6px 0 0;
+	padding: 1px 5px 0 0;
 }
 
 /* window title & count */
