@@ -85,7 +85,7 @@ To switch wallpaper with its theme, you can use the `set_wallpaper.sh` script wi
 | `Super + ²`                  | Toggle scratchpad workspace            |
 
 
-### Move & resice windows
+### Move & resize windows
 | Shortcut                               | Action                   |
 | -------------------------------------- | ------------------------ |
 | `Super + Shift + ↑ / ↓ / ← / →`        | Resize focused window    |
