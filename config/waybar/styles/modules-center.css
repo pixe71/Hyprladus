@@ -1,4 +1,4 @@
-@import "../theme.css";
+@import "../theme_pywal.css";
 
 /* temperature */
 
@@ -52,7 +52,7 @@
 }
 #clock.time {
 	background-color: @time;
-	padding-left: 2px;
+    padding: 0 5px 0 8px;
 }
 #custom-right_div.3 {
 	background-color: @date;
@@ -63,6 +63,7 @@
 
 #clock.date {
 	background-color: @date;
+    padding: 0 2px 0 6px;
 }
 #custom-right_div.4 {
 	background-color: @tray;
@@ -82,7 +83,7 @@
 	
 #idle_inhibitor {
 	background-color: @tray;
-    padding-left: 6px;
+    padding-left: 8px;
     padding-top: 2px;
 }
 #custom-hyprsunset {
@@ -93,7 +94,7 @@
 
 #custom-system_update {
 	background-color: @tray;
-	padding-right: 2px
+	padding-right: 6px
 }
 #custom-right_div.5 {
 	color: @tray;

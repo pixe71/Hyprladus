@@ -63,7 +63,7 @@
     // "margin-right":
     "spacing": 0,
     // "name":
-    "mode": "dock",
+    // "mode": "dock",
     // "start_hidden":
     // "modifier-reset":
     // "exclusive":
@@ -81,11 +81,11 @@
             // "click-to-reveal": true   // <-- click toggle, plus fiable que hover
         },
         "modules": [
-            "custom/tray-launcher",
+            "custom/traylauncher",
             "tray"
         ]
     },
-    "custom/tray-launcher": {
+    "custom/traylauncher": {
         "format": "󰍜",
         "tooltip": "System tray (click)",
         "min-length": 4,
@@ -192,7 +192,8 @@
     "custom/distro": {
         "format": "󰣇",
         "tooltip": false,
-        "on-click": "~/.config/waybar/scripts/toggle_effects.sh"
+        "on-click": "~/.config/eww/menu/toggle_menu.sh",
+        "on-click-right": "~/.config/waybar/scripts/toggle_effects.sh"
     },
     "clock#time": {
         // "interval":
@@ -200,8 +201,8 @@
         // "timezone":
         // "timezones":
         // "locale":
-        "min-length": 6,
-        "max-length": 6,
+        "min-length": 5,
+        "max-length": 5,
         // "rotate": 0,
         // "on-click":
         // "on-click-middle":
@@ -217,12 +218,12 @@
 	--------------*/
     "clock#date": {
         // "interval":
-        "format": "{:%d-%m}",
+        "format": "{:%d/%m}",
         // "timezone":
         // "timezones":
         // "locale":
-        "min-length": 7,
-        "max-length": 7,
+        "min-length": 6,
+        "max-length": 6,
         // "rotate":
         // "on-click":
         // "on-click-middle":
@@ -333,7 +334,7 @@
         // "dynamic-separator":
         // "dynamic-importance-order":
         // "min-length":
-        "max-length": 1000
+        "max-length": 16
     },
     "group/pulseaudio": {
         "orientation": "horizontal",

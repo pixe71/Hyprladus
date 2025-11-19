@@ -1,6 +1,6 @@
 {
     "clock#date": {
-        "format": "󰸗 {:%m-%d}",
+        "format": "󰸗 {:%m/%d}",
         "tooltip-format": "<tt>{calendar}</tt>",
 
         "calendar": {

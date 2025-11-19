@@ -23,6 +23,7 @@
 @define-color hover-bg        @color3;
 @define-color hover-fg        alpha(@text, 0.75);
 @define-color outline         shade(@background, 0.5);
+@define-color accent          @white;
 
 /* Module Colors */
 
