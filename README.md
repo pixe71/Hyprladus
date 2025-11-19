@@ -3,8 +3,8 @@
 <br>
 
 ## Preview
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/1ba1b7dd-9308-491f-b183-381b0c6728c5" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c0b98ea8-cae7-4b7b-b25b-977bea076e07" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f342621a-a443-4c54-9456-7c4b1ec5e942" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/22d9e78b-2fb6-4e8b-b855-6eb36c37c9b4" />
 <br>
 
 ## Before Installation
