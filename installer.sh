@@ -107,7 +107,6 @@ pacman_packages=(
     zoxide
     fzf
     pacman-contrib
-    gtk-engine-murrine
     pavucontrol
     brightnessctl
     jq
@@ -117,6 +116,7 @@ pacman_packages=(
 
 # AUR packages (install with yay)
 aur_packages=(
+    gtk-engine-murrine
     hyprqt6engine
     neofetch
     auto-cpufreq
@@ -130,6 +130,7 @@ aur_packages=(
     zsh-you-should-use
     gtk-theme-material-black
     caffeine
+    wlogout
 )
 
 echo "----------------------------------------"
@@ -220,6 +221,8 @@ echo "Copying hypr config"
 cp -r config/hypr ~/.config/
 echo "Copying rofi config"
 cp -r config/rofi ~/.config/
+echo "Copying wlogout config"
+cp -r config/wlogout ~/.config/
 echo "Copying waybar config"
 cp -r config/waybar/ ~/.config/
 echo "Copying cursor theme"
