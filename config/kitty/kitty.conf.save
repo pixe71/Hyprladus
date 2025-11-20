@@ -1,18 +1,19 @@
-# include kitty-themes/themes/Monokai_Black.conf
-include ~/.cache/wal/colors-kitty.conf
-
+# This is the configuration file for kitty terminal
+# For more information, see https://sw.kovidgoyal.net/kitty/conf.html
 font_family CaskaydiaCove Nerd Font Mono
 bold_font auto
 italic_font auto
 bold_italic_font auto
 enable_audio_bell no
-font_size 10.0
-window_padding_width 10
+font_size 9.0
+window_padding_width 5
 cursor_trail 1
 
-background_opacity 0.70
-# hide_window_decorations yes
-confirm_os_window_close 0
+# Themes can override any settings in this file
+include theme.conf
+#background_opacity 0.60
+#hide_window_decorations yes
+#confirm_os_window_close 0
 # Minimal Tab bar styling 
 tab_bar_edge                bottom
 tab_bar_style               powerline
@@ -26,4 +27,4 @@ tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows >
 # input_delay 0
 # repaint_delay 2
 # sync_to_monitor no
-# wayland_enable_ime nowaybar 
+# wayland_enable_ime no
