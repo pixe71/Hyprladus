@@ -1,16 +1,13 @@
-windowrule = opacity 1.00 1.00,class:^(firefox)$
+windowrule = opacity 1.00 1.0q0,class:^(firefox)$
 windowrule = opacity 0.90 0.90,class:^(Google-chrome)$
 windowrule = opacity 0.90 0.90,class:^(Brave-browser)$
-windowrule = opacity 0.90 0.90,class:^(code-oss)$
+windowrule = opacity 0.80 0.80,class:^(code-oss)$
 windowrule = opacity 0.90 0.90,class:^([Cc]ode)$
 windowrule = opacity 0.90 0.90,class:^(sublime_text)$
 windowrule = opacity 0.80 0.80,class:^(code-url-handler)$
 windowrule = opacity 0.80 0.80,class:^(code-insiders-url-handler)$
-# windowrule = opacity 0.60 0.60,class:^(kitty)$
-# windowrule = opacity 0.50 0.50,title:^(nvim*)$
-# windowrule = opacity 0.00 0.00,title:(.*)(micro)$
-# windowrule = noblur, class:^(kitty)$ # terminal blur
-windowrule = opacity 0.90 0.90,class:^(thunar)$
+windowrule = opacity 0.80 0.80,class:^(kitty)$
+windowrule = opacity 0.80 0.80,class:^(org.kde.dolphin)$
 windowrule = opacity 0.80 0.80,class:^(org.kde.ark)$
 windowrule = opacity 0.80 0.80,class:^(nwg-look)$
 windowrule = opacity 0.80 0.80,class:^(qt5ct)$
@@ -24,12 +21,11 @@ windowrule = opacity 0.80 0.70,class:^(org.kde.polkit-kde-authentication-agent-1
 windowrule = opacity 0.80 0.70,class:^(polkit-gnome-authentication-agent-1)$
 windowrule = opacity 0.80 0.70,class:^(org.freedesktop.impl.portal.desktop.gtk)$
 windowrule = opacity 0.80 0.70,class:^(org.freedesktop.impl.portal.desktop.hyprland)$
-windowrule = opacity 1.00 1.00,class:^([Ss]team)$
+windowrule = opacity 0.70 0.70,class:^([Ss]team)$
 windowrule = opacity 0.70 0.70,class:^(steamwebhelper)$
 windowrule = opacity 0.70 0.70,class:^([Ss]potify)$
 windowrule = opacity 0.70 0.70,initialTitle:^(Spotify Free)$
 windowrule = opacity 0.70 0.70,initialTitle:^(Spotify Premium)$
-windowrule = opacity 0.8O 0.8O,title:^(btop)$
 
 windowrule = opacity 0.90 0.90,class:^(com.github.rafostar.Clapper)$ # Clapper-Gtk
 windowrule = opacity 0.80 0.80,class:^(com.github.tchx84.Flatseal)$ # Flatseal-Gtk
@@ -40,7 +36,6 @@ windowrule = opacity 0.80 0.80,class:^(vesktop)$ # Vesktop
 windowrule = opacity 0.80 0.80,class:^(discord)$ # Discord-Electron
 windowrule = opacity 0.80 0.80,class:^(WebCord)$ # WebCord-Electron
 windowrule = opacity 0.80 0.80,class:^(ArmCord)$ # ArmCord-Electron
-windowrule = opacity 0.80 0.80,class:^(legcord)$
 windowrule = opacity 0.80 0.80,class:^(app.drey.Warp)$ # Warp-Gtk
 windowrule = opacity 0.80 0.80,class:^(net.davidotek.pupgui2)$ # ProtonUp-Qt
 windowrule = opacity 0.80 0.80,class:^(yad)$ # Protontricks-Gtk
@@ -51,19 +46,6 @@ windowrule = opacity 0.80 0.80,class:^(com.github.unrud.VideoDownloader)$ # Vide
 windowrule = opacity 0.80 0.80,class:^(io.gitlab.adhami3310.Impression)$ # Impression-Gtk
 windowrule = opacity 0.80 0.80,class:^(io.missioncenter.MissionCenter)$ # MissionCenter-Gtk
 windowrule = opacity 0.80 0.80,class:^(io.github.flattool.Warehouse)$ # Warehouse-Gtk
-
-windowrule = noborder, class:^(com-group_finity-mascot-Main)$
-windowrule = noshadow, class:^(com-group_finity-mascot-Main)$
-windowrule = noblur, class:^(com-group_finity-mascot-Main)$
-
-#Jetbrain flickering
-windowrule = noinitialfocus,class:jetbrains-toolbox, floating:1
-windowrule = noinitialfocus,class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:1
-windowrule = noinitialfocus,class:(jetbrains-)(.*), title:^$, initialTitle:^$, floating:1
-windowrule = noinitialfocus,class:(jetbrains-)(.*), initialTitle:(.+), floating:1
-windowrule = noinitialfocus,class:(jetbrains-)(.*), floating:1
-
-windowrule = opacity 0.90 0.90,class:^(jetbrains-idea)$
 
 windowrule = float,class:^(org.kde.dolphin)$,title:^(Progress Dialog — Dolphin)$
 windowrule = float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$
@@ -97,8 +79,7 @@ windowrule = float,class:^(com.github.unrud.VideoDownloader)$ # VideoDownloader-
 windowrule = float,class:^(io.gitlab.adhami3310.Impression)$ # Impression-Gtk
 windowrule = float,class:^(io.missioncenter.MissionCenter)$ # MissionCenter-Gtk
 
-windowrule = float,class:^(org.kde.kruler)$
-windowrule = float,class:^([Uu]niliste)$
+windowrule = noblur,class:^(kitty)$
 
 # screen-share
 windowrule = opacity 0.0 override, class:^(xwaylandvideobridge)$
@@ -116,19 +97,6 @@ windowrule = float,title:^(Confirm to replace files)$
 windowrule = float,title:^(File Operation Progress)$
 windowrule = float,class:^(xdg-desktop-portal-gtk)$
 
-# swaync
-windowrule = opacity 0.0 override,class:^(swaync-control-center)$
-windowrule = opacity 0.0 override,class:^(swaync-notification-window)$
-
-# windowrule = float, class:^(cava-bg)$
-# windowrule = pin, class:^(cava-bg)$          # "pin" = visible sur tous les bureaux (sticky)
-# windowrule = nofocus, class:^(cava-bg)$      # Ne peut pas être sélectionné
-# windowrule = noinitialfocus, class:^(cava-bg)$ # Ne vole pas le focus au démarrage
-# windowrule = noborder, class:^(cava-bg)$     # Pas de bordure
-# windowrule = noshadow, class:^(cava-bg)$      # Pas d'ombre
-# # windowrule = move 0 730, class:^(cava-bg)$
-# # windowrule = size 100% 350, class:^(cava-bg)$
-# windowrule = noblur, class:^(cava-bg)$
 
 # LAYER
 layerrule = blur,rofi
@@ -140,4 +108,3 @@ layerrule = ignorezero,swaync-notification-window
 layerrule = blur,swaync-control-center
 layerrule = ignorezero,swaync-control-center
 layerrule = blur,logout_dialog
-layerrule = blur,waybar

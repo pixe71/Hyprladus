@@ -10,43 +10,41 @@ $mainMod = Super # super / meta / windows key
 
 # Assign apps
 $term = kitty
-$editor = nvim
+$editor = subl
 $file = thunar
 $browser = firefox
 
 # Window/Session actions
-binde = $mainMod, Q, exec, $scrPath/dontkillsteam.sh # close focused window
-bind = Alt, F4, exec, hyprctl dispatch forcekillactive # kill active window
+bind = $mainMod, Q, exec, $scrPath/dontkillsteam.sh # close focused window
+bind = Alt, F4, exec, $scrPath/dontkillsteam.sh # close focused window
 bind = $mainMod+Alt, Delete, exit # kill hyprland session
 bind = $mainMod, W, togglefloating, # toggle the window between focus and float
 bind = $mainMod, G, togglegroup, # toggle the window between focus and group
 bind = , F12, fullscreen, # toggle the window between focus and fullscreen
-bind = $mainMod, Delete, exec, hyprlock --immediate-render # launch lock screen
+bind = $mainMod, L, exec, hyprlock --immediate-render # launch lock screen
 bind = $mainMod+Shift, F, exec, $scrPath/windowpin.sh # toggle pin on focused window
-bind = $mainMod, Backspace, exec, ~/.local/share/bin/wlogout.sh # launch logout menu
+bind = $mainMod, Backspace, exec, ~/.config/rofi/powermenu/type-4/powermenu.sh # launch logout menu
 bind = Ctrl+Alt, W, exec, killall waybar || waybar # toggle waybar and reload config
+bind = $mainMod+Shift, Q, exec, hyprctl dispatch forcekillactive # kill active window
 bind = $mainMod, F12, exec, hyprctl dispatch fullscreen 1 # maximize active window
 
 # Application shortcuts
 bind = $mainMod, RETURN, exec, $term # launch terminal emulator
 bind = $mainMod, E, exec, $file # launch file manager
-bind = $mainMod, C, exec, kitty -e $editor # launch text editor
+bind = $mainMod, C, exec, $editor # launch text editor
 bind = $mainMod, F, exec, $browser # launch web browser
 bind = Ctrl+Shift, Escape, exec, kitty -e btop # launch system monitor (btop)
-bind = $mainMod, D, exec, __GLX_VENDOR_LIBRARY_NAME=intel discord
-bind = $mainMod, M, exec, __GLX_VENDOR_LIBRARY_NAME=intel spotify
+bind = $mainMod, D, exec, discord --disable-gpu
+bind = $mainMod, M, exec, spotify
 bind = $mainMod, S, exec, __GLX_VENDOR_LIBRARY_NAME=intel steam
 # bind = $mainMod, S, exec, steam
 bind = Ctrl, Escape, exec, hyprpicker -a -f rgb & # Launch color picker
-bind = Ctrl, code:49, exec, kruler
 
 # Rofi menus
-bind = $mainMod, A, exec, pkill rofi || rofi -show drun -modi drun,filebrowser,run,window
-bind = $mainMod, Tab, exec, pkill rofi || rofi -show window -modi window
-bind = $mainMod, V, exec, $scrPath/clipManager.sh # launch clipboard
-
-# Notifications
-bind = $mainMod, N, exec, swaync-client -t -sw # swaync pannel
+# bind = $mainMod, SUPER_L, exec, pkill -x rofi || $scrPath/rofilaunch.sh d # launch application launcher
+bind = $mainMod, A, exec, pkill -x rofi || ~/.config/rofi/launchers/type-1/launcher.sh drun  # launch application launcher
+bind = $mainMod, Tab, exec, pkill -x rofi || ~/.config/rofi/launchers/type-1/launcher.sh window # launch window switcher
+bind = $mainMod, V, exec, pkill -x rofi || cliphist list | rofi -config clipboard.rasi -dmenu | cliphist decode | wl-copy # launch clipboard
 
 # Audio control
 binddl  = , XF86AudioMute,$d  toggle mute output, exec, $scrPath/volumecontrol.sh -o m # toggle audio mute
@@ -68,8 +66,7 @@ binddel = , XF86MonBrightnessDown, $d decrease brightness , exec, $scrPath/brigh
 bindl = , XF86Display,   exec, nwg-displays
 bindl = , XF86Tools,     exec, kitty -d ~/.config/hypr
 bindl = , XF86Favorites, exec, kitty --hold -e fastfetch
-bindl = , XF86Keyboard,  exec, hyprctl switchxkblayout at-translated-set-2-keyboard next
-
+bindl = , XF86Keyboard,  exec, hyprctl switchxkblayout at-translated-set-2-keyboard nextx
 # Move between grouped windows
 bind = $mainMod CTRL , H, changegroupactive, b
 bind = $mainMod CTRL , L, changegroupactive, f
@@ -86,11 +83,6 @@ bind = $mainMod, Left, movefocus, l
 bind = $mainMod, Right, movefocus, r
 bind = $mainMod, Up, movefocus, u
 bind = $mainMod, Down, movefocus, d
-# alt
-bind = $mainMod, H, movefocus, l
-bind = $mainMod, L, movefocus, r
-bind = $mainMod, K, movefocus, u
-bind = $mainMod, J, movefocus, d
 
 # Switch workspaces
 bind = $mainMod, code:10, workspace, 1
@@ -159,7 +151,7 @@ bind = $mainMod+Shift, code:49, movetoworkspace, special
 bind = $mainMod, code:49, togglespecialworkspace,
 
 # Toggle focused window split
-bind = $mainMod, I, togglesplit
+bind = $mainMod, J, togglesplit
 
 # Move focused window to a workspace silently
 bind = $mainMod+Alt, code:10, movetoworkspacesilent, 1
@@ -181,13 +173,4 @@ binde = $mainMod, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl g
 binde = $mainMod, code:20, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')
 
 
-bindl = , switch:Lid Switch, exec, hyprlock
-#bindl = , switch:off:Lid Switch, exec, 
-
-# trigger when the switch is toggled
-#bindl = , switch:Lid Switch, exec, hyprlock
-# trigger when the switch is turning on
-#bindl = , switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
-# trigger when the switch is turning off
-#bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, 2560x1600, 0x0, 1"
-
+bindl = , switch:on:Lid Switch, exec, hyprlock -v & sleep 0.5
