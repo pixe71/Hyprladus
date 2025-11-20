@@ -105,6 +105,7 @@ To switch wallpaper with its theme, you can use the `set_wallpaper.sh` script wi
 | `Super + O`         | Make window opaque (deppends on `windowrule`     |
 | `Super + Shift + O` | Make window transparent (deppends on `windowrule`|
 | `Super + = / )`     | Zoom cursor in/out      |
+| `Super + N`       | Toggle notifications pannel                    |
 
 ### Audio & Media control
 | Shortcut                                      | Action                      |
