@@ -23,3 +23,6 @@ echo "Sptotify theme updated."
 pkill waybar 2>/dev/null || true
 nohup waybar >/dev/null 2>&1 &
 echo "Waybar reloaded."
+killall swaync && swaync & disown
+echo "swaync notification reloaded."
+
