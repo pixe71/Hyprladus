@@ -234,6 +234,8 @@ sudo cp -r zsh /usr/share/
 sudo cp -r zsh-theme-powerlevel10k /usr/share/
 echo "Copying Spicetify config"
 cp -r config/spicetify ~/.config/
+echo "Adding setwallpaper to Thunar config"
+cp config/Thunar/uca.xml ~/.config/Thunar/
 
 sudo chsh -s /usr/bin/zsh root
 sudo chsh -s /usr/bin/zsh "$USER"
