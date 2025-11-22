@@ -238,6 +238,8 @@ echo "Copying Spicetify config"
 cp -r config/spicetify ~/.config/
 echo "Adding setwallpaper to Thunar config"
 cp config/Thunar/uca.xml ~/.config/Thunar/
+echo "Copying gtk config"
+cp config/gtk-3.0 config/gtk-4.0 ~/.config
 
 sudo chsh -s /usr/bin/zsh root
 sudo chsh -s /usr/bin/zsh "$USER"
