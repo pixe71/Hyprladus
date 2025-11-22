@@ -191,7 +191,7 @@ sudo systemctl enable bluetooth.service
 
 # COPYING FILES
 
-mkdir -p ~/.local/share/bin ~/.cache/wal ~/.config/wal ~/Pictures ~/.config ~/etc/greetd ~/Documents ~/Downloads ~/Music ~/Videos
+mkdir -p ~/.local/share/bin ~/.cache/wal ~/.config/wal ~/Pictures ~/.config ~/etc/greetd ~/Documents ~/Downloads ~/Music ~/Videos ~/.config/Thunar
 
 echo "Copying .oh-my-zsh"
 cp -r .oh-my-zsh ~/
