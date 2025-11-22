@@ -242,6 +242,8 @@ cp config/Thunar/uca.xml ~/.config/Thunar/
 sudo chsh -s /usr/bin/zsh root
 sudo chsh -s /usr/bin/zsh "$USER"
 
+swww-daemon &
+
 ./set_wallpaper.sh Wallpapers/hypr.png
 
 echo "Hyprladus installation finished!"
