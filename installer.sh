@@ -23,6 +23,8 @@ echo " |_|  |_|\\__, | .__/|_|  |_|\\__,_|\\__,_|\\__,_|___/"
 echo "          __/ | |                                 "
 echo "         |___/|_|                                 "
 echo ""
+echo "It's higly recommended to make a backup of your system before proceeding (we never know...)"
+echo ""
 
 sudo pacman -S --needed --noconfirm git base-devel
 
