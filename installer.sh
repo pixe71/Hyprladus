@@ -65,7 +65,6 @@ pacman_packages=(
     hyprlang
     aquamarine
     hyprgraphics
-    hyprland-qtutils
     xdg-desktop-portal-hyprland
     rofi
     thunar
@@ -120,6 +119,7 @@ pacman_packages=(
 aur_packages=(
     gtk-engine-murrine
     hyprqt6engine
+    hyprland-qtutils
     neofetch
     auto-cpufreq
     python-pywal16
@@ -239,7 +239,7 @@ cp -r config/spicetify ~/.config/
 echo "Adding setwallpaper to Thunar config"
 cp config/Thunar/uca.xml ~/.config/Thunar/
 echo "Copying gtk config"
-cp config/gtk-3.0 config/gtk-4.0 ~/.config
+cp -r config/gtk-3.0 config/gtk-4.0 ~/.config
 
 sudo chsh -s /usr/bin/zsh root
 sudo chsh -s /usr/bin/zsh "$USER"
