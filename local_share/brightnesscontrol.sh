@@ -6,7 +6,7 @@ source "$scrDir/globalcontrol.sh"
 
 # Check if SwayOSD is installed
 use_swayosd=false
-isNotify=${BRIGHTNESS_NOTIFY:-true}
+isNotify=${BRIGHTNESS_NOTIFY:-false}
 if command -v swayosd-client >/dev/null 2>&1 && pgrep -x swayosd-server >/dev/null; then
     use_swayosd=true
 fi

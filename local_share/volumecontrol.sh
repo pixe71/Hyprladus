@@ -8,7 +8,7 @@ confDir=${confDir:-$XDG_CONFIG_HOME}
 
 # Check if SwayOSD is installed
 use_swayosd=false
-isNotify=${VOLUME_NOTIFY:-true}
+isNotify=${VOLUME_NOTIFY:-false}
 if command -v swayosd-client >/dev/null 2>&1 && pgrep -x swayosd-server >/dev/null; then
     use_swayosd=true
 fi
