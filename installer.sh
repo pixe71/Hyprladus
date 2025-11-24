@@ -61,7 +61,6 @@ pacman_packages=(
     hyprsunset
     hyprland-qt-support
     hyprcursor
-    hyprutils
     hyprlang
     aquamarine
     hyprgraphics
@@ -117,6 +116,7 @@ pacman_packages=(
 
 # AUR packages (install with yay)
 aur_packages=(
+    hyprutils-git
     gtk-engine-murrine
     hyprqt6engine
     hyprland-qtutils
