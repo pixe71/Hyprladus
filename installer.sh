@@ -116,7 +116,7 @@ pacman_packages=(
 
 # AUR packages (install with yay)
 aur_packages=(
-    hyprutils-git
+    hyprutils
     gtk-engine-murrine
     hyprqt6engine
     hyprland-qtutils
