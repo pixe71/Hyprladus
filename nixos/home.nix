@@ -86,7 +86,7 @@
     ".config/cava".source = ../config/cava;
     ".config/fastfetch".source = ../config/fastfetch;
     ".config/wlogout".source = ../config/wlogout;
-    ".config/swaync".source = ../config/swaync; # If exists
+    # ".config/swaync".source = ../config/swaync; # Missing in repo
     ".config/wal".source = ../config/wal;
     ".config/spicetify".source = ../config/spicetify;
     ".config/Thunar".source = ../config/Thunar;
