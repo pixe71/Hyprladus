@@ -245,8 +245,6 @@ HYDE_THEME_DIR="${HYDE_CONFIG_HOME}/themes/${HYDE_THEME}"
 wallbashDirs=(
     "${HYDE_CONFIG_HOME}/wallbash"
     "${XDG_DATA_HOME}/hyde/wallbash"
-    "/usr/local/share/hyde/wallbash"
-    "/usr/share/hyde/wallbash"
 )
 
 export HYDE_THEME \
@@ -272,20 +270,15 @@ pkg_installed() {
         return 0
     elif command -v "flatpak" &>/dev/null && flatpak info "${pkgIn}" &>/dev/null; then
         return 0
-    elif hyde-shell pm.sh pq "${pkgIn}" &>/dev/null; then
-        return 0
     else
         return 1
     fi
 }
+# Removed Arch AUR helper checks for NixOS compatibility
 
 get_aurhlpr() {
-    if pkg_installed yay; then
-        aurhlpr="yay"
-    elif pkg_installed paru; then
-        # shellcheck disable=SC2034
-        aurhlpr="paru"
-    fi
+    # On NixOS we usually don't use AUR helpers like yay/paru directly from scripts
+    aurhlpr=""
 }
 
 set_conf() {
@@ -376,11 +369,7 @@ get_hyprConf() {
         *)
             grep "^[[:space:]]*\$default.${hyVar}\s*=" \
                 "XDG_DATA_HOME/hyde/hyde.conf" \
-                "$XDG_DATA_HOME/hyde/hyprland.conf" \
-                "/usr/local/share/hyde/hyde.conf" \
-                "/usr/local/share/hyde/hyprland.conf" \
-                "/usr/share/hyde/hyde.conf" \
-                "/usr/share/hyde/hyprland.conf" 2>/dev/null |
+                "$XDG_DATA_HOME/hyde/hyprland.conf" 2>/dev/null |
                 cut -d '=' -f2 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | head -n 1
             ;;
         esac

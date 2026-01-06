@@ -18,7 +18,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
+          
+          # Replace 'user' with your actual username found in configuration.nix and home.nix
           home-manager.users.user = import ./nixos/home.nix;
+          
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];

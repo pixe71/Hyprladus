@@ -6,6 +6,10 @@
   home.username = "user";
   home.homeDirectory = "/home/user";
 
+  home.sessionPath = [
+    "$HOME/.local/share/bin"
+  ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -71,6 +75,18 @@
     polkit_gnome
     qt6ct
     libsForQt5.qt5ct
+    spicetify-cli
+    xdotool
+    cliphist
+    tesseract
+    swappy
+    wlogout
+    playerctl
+    swayosd
+    pywalfox-native
+    parallel
+    psmisc # killall
+    procps # pkill, pgrep
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -103,8 +119,9 @@
     "Pictures/Wallpapers".source = ../Wallpapers;
     
     # Root scripts
-    "set_wallpaper.sh".source = ../set_wallpaper.sh;
-    "rmnot.sh".source = ../rmnot.sh;
+    #"set_wallpaper.sh".source = ../set_wallpaper.sh; # Moved to local_share
+    #"rmnot.sh".source = ../rmnot.sh; # Deleted
+    
   };
 
   # Environment variables
@@ -145,15 +162,19 @@
       # Pywal
       (cat ~/.cache/wal/sequences &)
       
-      # Aliases from installer.sh/alias file if it exists, or define here
+      # Aliases
       alias ls='eza --icons'
       alias ll='eza -al --icons'
-      alias setwallpaper='~/set_wallpaper.sh'
+      alias setwallpaper='set_wallpaper.sh'
     '';
   };
   
   # Link .p10k.zsh
   home.file.".p10k.zsh".source = ../.p10k.zsh;
+
+  # Link scripts to ~/.local/share/bin 
+  # (Must be referenced as absolute path or relative to flake root if using flake-utils/extra-files, but home-manager source is relative to this file)
+  home.file.".local/share/bin".source = ../local_share;
 
   # GTK Theme
   gtk = {

@@ -1,2 +1,0 @@
-fix waybar sound module (?)
-fix firefox theme

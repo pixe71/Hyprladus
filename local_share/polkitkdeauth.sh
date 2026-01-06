@@ -4,7 +4,8 @@
 if [ -d /run/current-system/sw/libexec ]; then
     libDir=/run/current-system/sw/libexec
 else
-    libDir=/usr/lib
+    echo "Error: /run/current-system/sw/libexec not found. Is this NixOS?"
+    exit 1
 fi
 
 ${libDir}/polkit-gnome/polkit-gnome-authentication-agent-1 &

@@ -1,12 +1,7 @@
 #!/usr/bin/env bash
 
-# shellcheck source=$HOME/.local/bin/hyde-shell
+# HyDE shell sourcing removed for separate NixOS port
 # shellcheck disable=SC1091
-if ! source "$(command -v hyde-shell)"; then
-	echo "[wallbash] code :: Error: hyde-shell not found."
-	echo "[wallbash] code :: Is HyDE installed?"
-	exit 1
-fi
 
 USAGE() {
 	cat <<"USAGE"

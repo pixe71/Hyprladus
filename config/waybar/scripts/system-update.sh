@@ -1,89 +1,23 @@
 #!/usr/bin/env bash
 
-ICON_UPDATE=$(printf '\U000F0E1F')   # U+F0E1F  (󰸟)
-ICON_DOWNLOAD=$(printf '\uF409')     # U+F409   ()
+# Check for updates on NixOS
+# This is a rough estimation based on comparing the current system flake input revision with the remote.
+# Real "available updates" detection on NixOS is complex. 
+# This script simply acts as a placeholder or a simple "rebuild" trigger.
 
-# Check release
-if [ ! -f /etc/arch-release ]; then
-  exit 0
-fi
+ICON_UPDATE=$(printf '\U000F0E1F')   # 󰸟
+ICON_DOWNLOAD=$(printf '\uF409')     # 
 
-pkg_installed() {
-  local pkg=$1
-
-  if pacman -Qi "${pkg}" &>/dev/null; then
-    return 0
-  elif pacman -Qi "flatpak" &>/dev/null && flatpak info "${pkg}" &>/dev/null; then
-    return 0
-  elif command -v "${pkg}" &>/dev/null; then
-    return 0
-  else
-    return 1
-  fi
-}
-
-get_aur_helper() {
-  if pkg_installed yay; then
-    aur_helper="yay"
-  elif pkg_installed paru; then
-    aur_helper="paru"
-  fi
-}
-
-get_aur_helper
-export -f pkg_installed
-
-# Trigger upgrade
 if [ "$1" == "up" ]; then
-  trap 'pkill -RTMIN+20 waybar' EXIT
-  command="
-    $0 upgrade
-    ${aur_helper} -Syu
-    if pkg_installed flatpak; then flatpak update; fi
+    command="
+    echo 'Starting NixOS Rebuild...'
+    cd ~/Hyprladus && nixos-rebuild switch --flake .#default
     printf '\n'
     read -n 1 -p 'Press any key to continue...'
     "
-  kitty --title "$ICON_DOWNLOAD  System Update" sh -c "${command}"
+    kitty --title "$ICON_DOWNLOAD  System Update" sh -c "${command}"
+    exit 0
 fi
 
-# Check for AUR updates
-if [ -n "$aur_helper" ]; then
-  aur_updates=$(${aur_helper} -Qua | grep -c '^')
-else
-  aur_updates=0
-fi
-
-# Check for official repository updates
-official_updates=$(
-  (while pgrep -x checkupdates >/dev/null; do sleep 1; done)
-  checkupdates | grep -c '^'
-)
-
-# Check for Flatpak updates
-if pkg_installed flatpak; then
-  flatpak_updates=$(flatpak remote-ls --updates | grep -c '^')
-else
-  flatpak_updates=0
-fi
-
-# Calculate total available updates
-total_updates=$((official_updates + aur_updates + flatpak_updates))
-
-# Handle formatting based on AUR helper
-if [ "$aur_helper" == "yay" ]; then
-  [ "${1}" == upgrade ] && printf "Official:  %-10s\nAUR ($aur_helper): %-10s\nFlatpak:   %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
-
-  tooltip="Official:  $official_updates\nAUR ($aur_helper): $aur_updates\nFlatpak:   $flatpak_updates"
-
-elif [ "$aur_helper" == "paru" ]; then
-  [ "${1}" == upgrade ] && printf "Official:   %-10s\nAUR ($aur_helper): %-10s\nFlatpak:    %-10s\n\n" "$official_updates" "$aur_updates" "$flatpak_updates" && exit
-
-  tooltip="Official:   $official_updates\nAUR ($aur_helper): $aur_updates\nFlatpak:    $flatpak_updates"
-fi
-
-# Module and tooltip
-if [ $total_updates -eq 0 ]; then
-  echo "{\"text\":\"$ICON_UPDATE\", \"tooltip\":\"Packages are up to date\"}"
-else
-  echo "{\"text\":\"$ICON_DOWNLOAD\", \"tooltip\":\"${tooltip//\"/\\\"}\"}"
-fi
+# return empty json to hide the module by default, preventing errors
+exit 0
