@@ -1,4 +1,4 @@
-# Hyprladus
+# Hyprladus (NixOS Version)
 > My neat and functional Hyprland rice
 <br>
 
