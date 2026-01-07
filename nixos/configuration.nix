@@ -114,7 +114,7 @@
     nerd-fonts.symbols-only
     nerd-fonts.fira-code
     noto-fonts
-    noto-fonts-emoji
+    pkgs.noto-fonts-color-emoji
     dejavu_fonts
   ];
 
@@ -129,7 +129,6 @@
     };
   };
 
-  services.udiskie.enable = true;
   services.auto-cpufreq.enable = true;
   services.blueman.enable = true;
 

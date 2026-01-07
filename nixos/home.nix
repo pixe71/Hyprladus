@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "user";
-  home.homeDirectory = "/home/user";
+  home.username = "root";
+  home.homeDirectory = "/root";
 
   home.sessionPath = [
     "$HOME/.local/share/bin"
@@ -28,7 +28,7 @@
     hyprlock
     hypridle
     hyprcursor
-    rofi-wayland
+    rofi
     swww
     swaynotificationcenter
     nwg-look
@@ -45,9 +45,9 @@
     discord
     micro
     neovim
-    feh
-    okular
-    pavucontrol
+    pkgs.feh
+    pkgs.kdePackages.okular
+    pkgs.pavucontrol
     
     # CLI Tools
     bat
@@ -73,7 +73,7 @@
     libnotify
     imagemagick
     polkit_gnome
-    qt6ct
+    pkgs.qt6Packages.qt6ct
     libsForQt5.qt5ct
     spicetify-cli
     xdotool
@@ -88,6 +88,8 @@
     psmisc # killall
     procps # pkill, pgrep
   ];
+
+  services.udiskie.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -112,7 +114,6 @@
     # Scripts
     ".local/share/bin" = {
       source = ../local_share;
-      recursive = true;
     };
     
     # Wallpapers
@@ -174,7 +175,6 @@
 
   # Link scripts to ~/.local/share/bin 
   # (Must be referenced as absolute path or relative to flake root if using flake-utils/extra-files, but home-manager source is relative to this file)
-  home.file.".local/share/bin".source = ../local_share;
 
   # GTK Theme
   gtk = {
