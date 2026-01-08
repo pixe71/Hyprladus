@@ -17,17 +17,17 @@
         # CORRECTION 3 : Chemin direct si le fichier est à côté
         ./nixos/configuration.nix
         
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";          
+        #home-manager.nixosModules.home-manager
+        #{
+         # home-manager.useGlobalPkgs = true;
+          #home-manager.useUserPackages = true;
+          #home-manager.backupFileExtension = "backup";          
           # CORRECTION 2 : Remplace 'user' par ton vrai nom d'utilisateur !
           # Si tu n'as pas encore créé de user et que tu es root, commente cette ligne pour l'instant.
-          home-manager.users.luc = import ./nixos/home.nix;
+          #home-manager.users.luc = import ./nixos/home.nix;
           
-          home-manager.extraSpecialArgs = { inherit inputs; };
-        }
+          #home-manager.extraSpecialArgs = { inherit inputs; };
+        #}
       ];
     };
   };
