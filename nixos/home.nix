@@ -41,6 +41,7 @@
     # Applications
     firefox
     kitty
+    foot
     xfce.thunar
     discord
     micro
