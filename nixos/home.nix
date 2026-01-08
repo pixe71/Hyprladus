@@ -92,6 +92,12 @@
 
   services.udiskie.enable = true;
 
+  wayland.windowManager.hyprland.extraConfig = ''
+    $terminal = foot
+    $mainMod = SUPER
+    bind = $mainMod, Q, exec, $terminal
+  '';
+
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
