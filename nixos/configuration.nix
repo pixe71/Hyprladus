@@ -16,6 +16,11 @@
   # Set your time zone.
   time.timeZone = "Europe/Paris"; # Change this to your timezone
 
+  swapDevices = [ {
+  device = "/var/lib/swapfile";
+  size = 4 * 1024; # 4 Go de swap
+  } ];
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -51,7 +56,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false; # (ou true)
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -66,11 +71,12 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.user = {
+  users.users.luc = {
     isNormalUser = true;
-    description = "user";
+    description = "Luc";
     extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
     shell = pkgs.zsh;
+    initialPassword = "nix";
     packages = with pkgs; [
       # User specific packages
     ];

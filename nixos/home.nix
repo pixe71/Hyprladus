@@ -3,8 +3,8 @@
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "root";
-  home.homeDirectory = "/root";
+  home.username = "luc";
+  home.homeDirectory = "/home/luc";
 
   home.sessionPath = [
     "$HOME/.local/share/bin"

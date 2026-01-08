@@ -21,10 +21,10 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          
+          home-manager.backupFileExtension = "backup";          
           # CORRECTION 2 : Remplace 'user' par ton vrai nom d'utilisateur !
           # Si tu n'as pas encore créé de user et que tu es root, commente cette ligne pour l'instant.
-          home-manager.users.root = import ./nixos/home.nix;
+          home-manager.users.luc = import ./nixos/home.nix;
           
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
