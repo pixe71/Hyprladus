@@ -1,6 +1,4 @@
-# Hyprladus - NixOS Configuration
-
-My neat and functional Hyprland rice, ported to NixOS.
+# Hyprladus - NixOS Version
 
 ## Preview
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f342621a-a443-4c54-9456-7c4b1ec5e942" />
@@ -18,7 +16,7 @@ This repository contains the configuration to run the Hyprladus setup on NixOS u
 
 1.  **Clone the Repository**:
     ```bash
-    git clone https://github.com/sachatrouve1/Hyprladus.git ~/Hyprladus
+    git clone https://github.com/pixe71/Hyprladus-Nix-Version.git ~/Hyprladus
     cd ~/Hyprladus
     ```
 
